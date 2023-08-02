@@ -44,6 +44,16 @@ Route::resource('/', RegistrationController::class);
         <input type="submit" value="Submit">
     </form> <br>
 
+// Search Function
+    <form action="">
+        <input type="search" name="search" id="search" placeholder="Search ..." > <br>
+        <button type="submit">Search</button><br><br>
+        <a href="{{ url('/') }}">
+            <button type="submit">Reset</button>
+        </a>
+        <br><br>
+    </form>
+
     <table border="1px">
         <thead>
             <tr>
@@ -77,10 +87,16 @@ $table->timestamps();
 ```
 ## app\Http\Controllers\RegistrationController.php
 ```
-public function index()
+public function index(Request $request)
     {
-        // FOR SHOWING DATA IN INDEX PAGE
-        $data = Registration::all();
+        $search = $request['search'] ?? "";
+
+        if ($search != "") {
+            $data = Registration::where('name', "LIKE", "%$search%")->orWhere('email', "LIKE", "%$search%")->get();
+        } else {
+            $data = Registration::all();
+        }
+
         return view('form', ['data' => $data]);
     }
 
