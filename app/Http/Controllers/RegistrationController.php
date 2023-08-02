@@ -12,7 +12,9 @@ class RegistrationController extends Controller
      */
     public function index()
     {
-        return view('form');
+        // FOR SHOWING DATA IN INDEX PAGE
+        $data = Registration::all();
+        return view('form', ['data' => $data]);
     }
 
     /**
