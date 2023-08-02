@@ -10,10 +10,16 @@ class RegistrationController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        // FOR SHOWING DATA IN INDEX PAGE
-        $data = Registration::all();
+        $search = $request['search'] ?? "";
+
+        if ($search != "") {
+            $data = Registration::where('name', "LIKE", "%$search%")->orWhere('email', "LIKE", "%$search%")->get();
+        } else {
+            $data = Registration::all();
+        }
+
         return view('form', ['data' => $data]);
     }
 
