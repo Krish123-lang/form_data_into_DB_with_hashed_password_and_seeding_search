@@ -22,5 +22,16 @@ class RegistrationSeeder extends Seeder
             'email' => Str::random(10) . '@gmail.com',
             'password' => Hash::make('password'),
         ]);
+
+        // FOR CREATING/SEEDING MULTIPLE DATA
+        // for ($i = 0; $i < 10; $i++) {
+        //     DB::table('registrations')->insert(
+        //         [
+        //             'name' => Str::random(10),
+        //             'email' => Str::random(10) . '@gmail.com',
+        //             'password' => Hash::make('password'),
+        //         ]
+        //     );
+        // }
     }
 }
