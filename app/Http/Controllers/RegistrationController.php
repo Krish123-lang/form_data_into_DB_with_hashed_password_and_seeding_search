@@ -17,7 +17,10 @@ class RegistrationController extends Controller
         if ($search != "") {
             $data = Registration::where('name', "LIKE", "%$search%")->orWhere('email', "LIKE", "%$search%")->get();
         } else {
-            $data = Registration::all();
+            // $data = Registration::all();
+            // PAGINATION
+            $data = Registration::paginate(5);
+            
         }
 
         return view('form', ['data' => $data]);
