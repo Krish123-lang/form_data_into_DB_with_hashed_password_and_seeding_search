@@ -72,7 +72,11 @@
                 </tr>
             @endforeach
         </tbody>
-    </table>
+    </table><br><br>
+
+    {{-- PAGINATION --}}
+    {{ $data->links() }}
+    
 </body>
 
 </html>
