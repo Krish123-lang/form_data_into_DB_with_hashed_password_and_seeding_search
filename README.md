@@ -152,3 +152,5 @@ class RegistrationSeeder extends Seeder
 ```
 
 `* php artisan migrate:fresh --seed --seeder=RegistrationSeeder`
+#### Seeding without deleting previous data
+`* php artisan migrate --seed --seeder=RegistrationSeeder`
