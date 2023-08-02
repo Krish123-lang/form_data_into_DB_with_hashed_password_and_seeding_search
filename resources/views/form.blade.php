@@ -15,13 +15,13 @@
     
     <form action="{{ url('/') }}" method="post">
         @csrf
-        <input type="text" name="name" placeholder="name" value="{{ old('name') }}"><br>
+        <input type="text" name="name" placeholder="name"><br>
         <span>
             @error('name')
                 {{ $message }}
             @enderror
         </span><br>
-        <input type="email" name="email" placeholder="email" value="{{ old('email') }}"><br>
+        <input type="email" name="email" placeholder="email"><br>
         <span>
             @error('email')
                 {{ $message }}
@@ -41,7 +41,29 @@
         </span><br>
 
         <input type="submit" value="Submit">
-    </form>
+    </form> <br>
+
+    <table border="1px">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Password</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach ($data as $dt)
+                <tr>
+                    <th> {{ $dt->id }} </th>
+                    <td> {{ $dt->name }} </td>
+                    <td> {{ $dt->email }} </td>
+                    <td> {{ $dt->password }} </td>
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
 </body>
 
 </html>
