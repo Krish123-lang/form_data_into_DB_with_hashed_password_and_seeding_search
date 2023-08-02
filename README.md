@@ -4,7 +4,7 @@
 
 ## web.php
 ```
-use App\Http\Controllers\RegistrationController;\
+use App\Http\Controllers\RegistrationController;
 Route::resource('/', RegistrationController::class);
 ```
 ## resources/views/form.blade.php
@@ -47,10 +47,10 @@ Route::resource('/', RegistrationController::class);
 ```
 ## database/migrations
 ```
- $table->id();\
-$table->string('name');\
-$table->string('email');\
-$table->string('password');\
+ $table->id();
+$table->string('name');
+$table->string('email');
+$table->string('password');
 $table->timestamps();
 ```
 ## app\Http\Controllers\RegistrationController.php
