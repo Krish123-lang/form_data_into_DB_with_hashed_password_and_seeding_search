@@ -199,3 +199,5 @@ class RegistrationSeeder extends Seeder
 `* php artisan migrate:fresh --seed --seeder=RegistrationSeeder`
 #### Seeding without deleting previous data
 `* php artisan migrate --seed --seeder=RegistrationSeeder`
+
+![Screenshot (132)](https://github.com/Krish123-lang/form_data_into_DB_with_hashed_password_and_seeding_search/assets/56486342/1c8cacd5-5d15-467a-9eb5-a7e7615a5a8a)
