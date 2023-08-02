@@ -43,6 +43,15 @@
         <input type="submit" value="Submit">
     </form> <br>
 
+    <form action="">
+        <input type="search" name="search" id="search" placeholder="Search ..." > <br>
+        <button type="submit">Search</button><br><br>
+        <a href="{{ url('/') }}">
+            <button type="submit">Reset</button>
+        </a>
+        <br><br>
+    </form>
+
     <table border="1px">
         <thead>
             <tr>
