@@ -142,12 +142,33 @@ use HasFactory;
 ``` * php artisan make:seeder RegistrationSeeder ```
 
 ```
+=== database/seeders/DatabaseSeeder.php
+namespace Database\Seeders;
+
+use Illuminate\Database\Seeder;
+
+class DatabaseSeeder extends Seeder
+{
+    /**
+     * Seed the application's database.
+     */
+    public function run(): void
+    {
+        $this->call([
+            RegistrationSeeder::class
+        ]);
+    }
+}
+
+
 === database/seeders/RegistrationSeeder.php
 
 // Added manually
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
+use App\Models\Registration;
+use Faker\Factory as Faker;
 
 
 class RegistrationSeeder extends Seeder
@@ -169,6 +190,16 @@ class RegistrationSeeder extends Seeder
         //         ]
         //     );
         // }
+//================================================================================================================================
+        // RECOMMENDED
+        $faker = Faker::create();
+        for ($i = 0; $i < 10; $i++) {
+            $registration = new Registration;
+            $registration->name = $faker->name;
+            $registration->email = $faker->email;
+            $registration->password = Hash::make($faker->password);
+            $registration->save();
+        }
     }
 }
 ```
