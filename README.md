@@ -92,3 +92,29 @@ use HasFactory;
         $this->attributes['password'] = Hash::make($password);
     }
 ```
+## For Seeding
+``` * php artisan make:seeder RegistrationSeeder ```
+
+```
+=== database/seeders/RegistrationSeeder.php
+
+// Added manually
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
+
+
+class RegistrationSeeder extends Seeder
+{
+    public function run(): void
+    {
+        DB::table('registrations')->insert([
+            'name' => Str::random(10),
+            'email' => Str::random(10) . '@gmail.com',
+            'password' => Hash::make('password'),
+        ]);
+    }
+}
+```
+
+`* php artisan migrate:fresh --seed --seeder=RegistrationSeeder`
