@@ -74,7 +74,11 @@ Route::resource('/', RegistrationController::class);
                 </tr>
             @endforeach
         </tbody>
-    </table>
+    </table><br><br>
+
+    {{-- PAGINATION --}}
+    {{ $data->links() }}
+
 </body>
 ```
 ## database/migrations
@@ -94,7 +98,9 @@ public function index(Request $request)
         if ($search != "") {
             $data = Registration::where('name', "LIKE", "%$search%")->orWhere('email', "LIKE", "%$search%")->get();
         } else {
-            $data = Registration::all();
+            // $data = Registration::all();
+            // PAGINATION
+            $data = Registration::get(5);
         }
 
         return view('form', ['data' => $data]);
