@@ -3,10 +3,12 @@
 `php artisan make:model Registration -mcr`
 
 ## web.php
+```
 use App\Http\Controllers\RegistrationController;\
 Route::resource('/', RegistrationController::class);
-
+```
 ## resources/views/form.blade.php
+```
 <body>
     @if (session()->has('success'))
         <b>{{ session()->get('success') }}</b>
@@ -42,19 +44,21 @@ Route::resource('/', RegistrationController::class);
         <input type="submit" value="Submit">
     </form>
 </body>
-
+```
 ## database/migrations
+```
  $table->id();\
 $table->string('name');\
 $table->string('email');\
 $table->string('password');\
 $table->timestamps();
-
+```
 ## app\Http\Controllers\RegistrationController.php
-public function index()\
-    {\
-        return view('form');\
-    }\
+```
+public function index()
+    {
+        return view('form');
+    }
 
     public function store(Request $request)
     {
@@ -72,8 +76,9 @@ public function index()\
         return redirect('/')->withSuccess('Added successfully!');
         // print_r($request->all());
     }
-
+```
 ## app\Models\Registration.php
+```
 use HasFactory;
 
     protected $fillable = ['name', 'email', 'password'];
@@ -86,3 +91,4 @@ use HasFactory;
         }
         $this->attributes['password'] = Hash::make($password);
     }
+```
