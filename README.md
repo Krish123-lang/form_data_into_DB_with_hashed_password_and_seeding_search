@@ -125,6 +125,7 @@ public function index(Request $request)
 ```
 ## app\Models\Registration.php
 ```
+use Illuminate\Support\Facades\Hash;
 use HasFactory;
 
     protected $fillable = ['name', 'email', 'password'];
